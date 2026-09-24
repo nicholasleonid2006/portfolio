@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicholas Leonid | AI & Fullstack Developer</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#f0fdfa",
+                100: "#ccfbf1",
+                400: "#2dd4bf",
+                500: "#14b8a6",
+                600: "#0d9488",
+                900: "#134e4a",
+                accent: "#06b6d4",
+              },
+              dark: {
+                bg: "#090a0f",
+                card: "#11131e",
+                border: "rgba(255, 255, 255, 0.08)",
+                hover: "rgba(255, 255, 255, 0.12)",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #08090d;
+        color: #e2e8f0;
+        overflow-x: hidden;
+      }
+
+      .glass-card {
+        background: rgba(17, 19, 30, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .glass-card:hover {
+        border-color: rgba(6, 182, 212, 0.35);
+        box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+        transform: translateY(-2px);
+      }
+
+      .glass-nav {
+        background: rgba(8, 9, 13, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .accent-glow {
+        box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+      }
+
+      .text-gradient {
+        background: linear-gradient(
+          135deg,
+          #ffffff 30%,
+          #a5f3fc 70%,
+          #06b6d4 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #08090d;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #06b6d4;
+      }
+
+      /* Pulse Dot Effect */
+      .status-pulse {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+        animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
+      }
+      @keyframes pulse-ring {
+        to {
+          box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200 relative"
+  >
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 glass-nav px-4 lg:px-12 py-3.5 flex items-center justify-between"
+    >
+      <a href="#" class="flex items-center gap-3 group">
+        <div
+          class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-slate-950 font-mono shadow-md group-hover:scale-105 transition-transform"
+        >
+          NL
+        </div>
+        <div>
+          <span
+            class="font-bold tracking-tight text-white block text-sm leading-none"
+            >NICHOLAS LEONID</span
+          >
+          <span class="text-[10px] text-cyan-400/80 font-mono"
+            >CS @ BINUS UNIVERSITY</span
+          >
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <div
+        class="hidden md:flex items-center gap-6 text-xs font-mono text-slate-400"
+      >
+        <a href="#about" class="hover:text-cyan-400 transition-colors"
+          >/01. ABOUT</a
+        >
+        <a href="#projects" class="hover:text-cyan-400 transition-colors"
+          >/02. PROJECTS</a
+        >
+        <a href="#experience" class="hover:text-cyan-400 transition-colors"
+          >/03. EXPERIENCE</a
+        >
+        <a href="#skills" class="hover:text-cyan-400 transition-colors"
+          >/04. SKILLS</a
+        >
+      </div>
+
+      <!-- Right Quick Actions -->
+      <div class="flex items-center gap-3"></div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 lg:px-8 pt-28 pb-20 space-y-24">
+      <!-- Hero Section -->
+      <section id="about" class="space-y-8 relative">
+        <!-- Background Ambient Glow -->
+        <div
+          class="absolute -top-12 -left-12 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl -z-10 pointer-events-none"
+        ></div>
+
+        <!-- Active Status Badge -->
+        <div
+          class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs text-slate-300 font-mono"
+        >
+          <span
+            class="w-2.5 h-2.5 rounded-full bg-emerald-500 status-pulse"
+          ></span>
+          <span>Open for Fullstack AI & ML Internships / Tech Roles</span>
+        </div>
+
+        <!-- Main Headline -->
+        <div class="space-y-4 max-w-4xl">
+          <h1
+            class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gradient leading-tight"
+          >
+            Building AI-Driven Systems & Fullstack Applications.
+          </h1>
+          <p
+            class="text-slate-400 text-base sm:text-lg max-w-2xl font-normal leading-relaxed"
+          >
+            Computer Science Undergraduate at
+            <span class="text-white font-medium">BINUS University</span> with
+            hands-on expertise in machine learning architectures, computer
+            vision pipelines, and fullstack cloud development.
+          </p>
+        </div>
+
+        <!-- Quick Contact / Info Badges Grid -->
+        <div class="flex flex-wrap items-center gap-3 text-xs font-mono pt-2">
+          <a
+            href="mailto:nicholasleonid@gmail.com"
+            class="glass-card px-3.5 py-2 rounded-xl text-slate-300 hover:text-cyan-300 flex items-center gap-2"
+          >
+            <i class="fa-regular fa-envelope text-cyan-400"></i>
+            nicholasleonid@gmail.com
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card px-3.5 py-2 rounded-xl text-slate-300 hover:text-cyan-300 flex items-center gap-2"
+          >
+            <i class="fa-brands fa-linkedin-in text-cyan-400"></i>
+            LinkedIn Profile
+          </a>
+          <div
+            class="glass-card px-3.5 py-2 rounded-xl text-slate-300 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-phone text-cyan-400"></i>
+            +62 81293051709
+          </div>
+          <div
+            class="glass-card px-3.5 py-2 rounded-xl text-slate-300 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-location-dot text-cyan-400"></i>
+            Jakarta, Indonesia
+          </div>
+          <div
+            class="glass-card px-3.5 py-2 rounded-xl text-cyan-300 border-cyan-500/20 font-bold flex items-center gap-2"
+          >
+            <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
+            GPA: 3.55 / 4.00
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-6">
+          <div
+            class="glass-card p-5 rounded-2xl relative overflow-hidden group"
+          >
+            <div
+              class="text-3xl font-extrabold font-mono text-cyan-400 tracking-tight"
+            >
+              4+
+            </div>
+            <div
+              class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono"
+            >
+              Major AI/ML Systems
+            </div>
+            <div class="text-[11px] text-slate-500 mt-2">
+              Fullstack Apps, Vision & NLP
+            </div>
+          </div>
+
+          <div
+            class="glass-card p-5 rounded-2xl relative overflow-hidden group"
+          >
+            <div
+              class="text-3xl font-extrabold font-mono text-cyan-400 tracking-tight"
+            >
+              12+ Mo
+            </div>
+            <div
+              class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono"
+            >
+              Leadership & PR
+            </div>
+            <div class="text-[11px] text-slate-500 mt-2">
+              Freshmen Leader & Brand Deals
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="space-y-8">
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-4"
+        >
+          <div>
+            <span
+              class="text-xs font-mono text-cyan-400 uppercase tracking-widest"
+              >/02. Selected Work</span
+            >
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+              Featured Projects & AI Systems
+            </h2>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid md:grid-cols-2 gap-6" id="projectsGrid">
+          <!-- Project 0: GPA Predictor -->
+          <div
+            class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            data-category="aiml"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20"
+                  >Machine Learning</span
+                >
+                <span class="text-slate-500">Python • XGBoost</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                Academic GPA Predictor based on Sleep Behavior
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Built a Gradient Boosting regressor on data from 634 students to
+                predict semester GPA using sleep duration, schedule consistency,
+                and past GPA, achieving a 0.296 MAE.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div
+                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-300"
+              >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Python</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Scikit-Learn</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Gradient Boosting</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Streamlit</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-500/30"
+                  >0.296 MAE</span
+                >
+              </div>
+
+              <a
+                href="https://github.com/nicholasleonid2006/academic-gpa-predictor"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 border border-white/10 text-xs font-mono text-slate-200 transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 1: HealthFlow -->
+          <div
+            class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            data-category="fullstack aiml"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/20"
+                  >Fullstack AI App</span
+                >
+                <span class="text-slate-500">React • Groq LLaMA 3</span>
+              </div>
+              <h3
+                class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors"
+              >
+                HealthFlow | Fitness & Nutrition AI Tracker
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Full-stack fitness tracking web app with calorie logging,
+                workout routine tracking, and sleep cycle metrics. Integrated
+                Groq LLaMA 3 for real-time fitness advice and image-based
+                calorie detection.
+              </p>
+            </div>
+
+            <!-- Tech Stack Tags -->
+            <div class="space-y-4">
+              <div
+                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-300"
+              >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >React</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Node.js</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Vite</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Tailwind CSS</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Supabase</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-500/30"
+                  >Groq LLaMA 3</span
+                >
+              </div>
+
+              <a
+                href="https://github.com/nicholasleonid2006/healthflow-app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 border border-white/10 text-xs font-mono text-slate-200 transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: HEER -->
+          <div
+            class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            data-category="aiml"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                  >Research Paper</span
+                >
+                <span class="text-slate-500">FER2013 • EfficientNetB0</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                Facial Emotion Recognition Framework (HEER)
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Lightweight FER framework using EfficientNetB0,
+                Squeeze-and-Excitation (SE) Attention, and landmark guidance.
+                Reached 71.45% test accuracy on FER2013 while significantly
+                lowering parameter counts compared to ResNet50/VGGNet.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div
+                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-300"
+              >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >PyTorch</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >EfficientNetB0</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >SE Attention</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Landmark Guidance</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-purple-950/60 text-purple-300 border border-purple-500/30"
+                  >71.45% FER2013 Accuracy</span
+                >
+              </div>
+
+              <a
+                href="https://github.com/nicholasleonid2006/facial-emotion-recognition/blob/main/Research%20Paper%20HEER.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 border border-white/10 text-xs font-mono text-slate-200 transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3: Indonesian Text Summarizer -->
+          <div
+            class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            data-category="nlp aiml"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-300 border border-emerald-500/20"
+                  >Natural Language Processing</span
+                >
+                <span class="text-slate-500">XL-Sum • Hugging Face</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                Indonesian Text Summarizer
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Fine-tuned transformer models (BART, PEGASUS, mT5, T5) on the
+                XL-Sum Indonesian news dataset using PyTorch & Hugging Face.
+                Achieved top 22.75 ROUGE-1 score with BART; live deployed on
+                Hugging Face Spaces.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div
+                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-300"
+              >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >PyTorch</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Hugging Face</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >BART</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >PEGASUS</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >mT5 / T5</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-500/30"
+                  >22.75 ROUGE-1</span
+                >
+              </div>
+
+              <a
+                href="https://github.com/nicholasleonid2006/indonesian-text-summarizer"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 border border-white/10 text-xs font-mono text-slate-200 transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 4: ASL Detection using Mediapipe -->
+          <div
+            class="project-card glass-card rounded-2xl p-6 flex flex-col justify-between space-y-6"
+            data-category="aiml"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-300 border border-blue-500/20"
+                  >Computer Vision</span
+                >
+                <span class="text-slate-500">45 FPS • CPU Optimized</span>
+              </div>
+              <h3 class="text-xl font-bold text-white">
+                ASL Sign Language Detection Pipeline
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Developed an American Sign Language (ASL) recognition system
+                using 3D MediaPipe hand keypoint landmarks and RBF-kernel SVC
+                classification. Achieved 99.74% test accuracy running at 45 FPS
+                on standard CPU with sub-millisecond classification latency.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <div
+                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-slate-300"
+              >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >MediaPipe 3D</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >OpenCV</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Scikit-Learn SVC</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/80 border border-white/5"
+                  >Python</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-blue-950/60 text-blue-300 border border-blue-500/30"
+                  >99.74% Accuracy</span
+                >
+              </div>
+
+              <a
+                href="https://github.com/nicholasleonid2006/asl-detection"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2.5 rounded-xl bg-slate-800/80 hover:bg-cyan-500/20 hover:text-cyan-300 border border-white/10 text-xs font-mono text-slate-200 transition-all flex items-center justify-center gap-2"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                View
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="space-y-8">
+        <div>
+          <span
+            class="text-xs font-mono text-cyan-400 uppercase tracking-widest"
+            >/03. Career & Leadership</span
+          >
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+            Work Experience & Leadership
+          </h2>
+        </div>
+
+        <div class="relative border-l border-slate-800 ml-3 pl-6 space-y-10">
+          <!-- Item 1 -->
+          <div class="relative group">
+            <!-- Timeline dot -->
+            <div
+              class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-cyan-400 border-4 border-slate-950 group-hover:scale-125 transition-transform"
+            ></div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1"
+              >
+                <span class="text-cyan-400 font-bold">BINUS UNIVERSITY</span>
+                <span class="text-slate-500">Jul 2026 – Present</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-white">
+                Freshmen Leader & Freshmen Partner | First Year Program
+              </h3>
+
+              <ul
+                class="space-y-2 text-sm text-slate-300 list-disc list-inside leading-relaxed"
+              >
+                <li>
+                  Guided incoming freshmen through campus orientation,
+                  introducing university facilities, academic policies, and
+                  campus life.
+                </li>
+                <li>
+                  Mentored first-year students on course management, study
+                  habits, and adapting to university life.
+                </li>
+              </ul>
+
+              <div
+                class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-slate-400"
+              >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/60 border border-white/5"
+                  >Mentorship</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/60 border border-white/5"
+                  >Peer Guidance</span
+                >
+                <span
+                  class="px-2 py-0.5 rounded bg-slate-800/60 border border-white/5"
+                  >Leadership</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="relative group">
+            <!-- Timeline dot -->
+            <div
+              class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-cyan-400 transition-colors"
+            ></div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1"
+              >
+                <span class="text-cyan-400 font-bold">BINUS UNIVERSITY</span>
+                <span class="text-slate-500"
+                  >Jan 2024 – Jan 2025 (12 Months)</span
+                >
+              </div>
+
+              <h3 class="text-lg font-bold text-white">
+                Activist MCB | Public Relation & Marketing
+              </h3>
+
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Partnered with top national and international cosmetic brands to
+                negotiate event sponsorship terms and targeted campus marketing
+                campaigns.
+              </p>
+
+              <div
+                class="pt-1 flex flex-wrap items-center gap-2 text-xs font-mono text-slate-300"
+              >
+                <span class="text-slate-500 text-[11px]"
+                  >Key Brand Partners Negotiated:</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-300"
+                  >Skintific</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-300"
+                  >Garnier</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-300"
+                  >Wardah</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyan-300"
+                  >MakeOver</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="relative group">
+            <div
+              class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-cyan-400 transition-colors"
+            ></div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1"
+              >
+                <span class="text-cyan-400 font-bold"
+                  >SMAK 5 PENABUR JAKARTA</span
+                >
+                <span class="text-slate-500"
+                  >May 2023 – Aug 2023 (3 Months)</span
+                >
+              </div>
+
+              <h3 class="text-lg font-bold text-white">
+                Committee Member of Escalades 2023 | Security Section
+              </h3>
+
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Coordinated event promotion and secured corporate sponsorships
+                for a large-scale school festival. Worked in a team to ensure
+                smooth operations and safety for attendees.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="relative group">
+            <div
+              class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-cyan-400 transition-colors"
+            ></div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1"
+              >
+                <span class="text-cyan-400 font-bold">AIESEC IN BINUS</span>
+                <span class="text-slate-500"
+                  >Aug 2024 – Nov 2024 (3 Months)</span
+                >
+              </div>
+
+              <h3 class="text-lg font-bold text-white">
+                AFL Delegate | Participant
+              </h3>
+
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Completed leadership and mentorship modules focused on
+                cross-cultural management and soft skills. Delivered group
+                presentations and pitching challenges to resolve simulated
+                organizational case studies.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="relative group">
+            <div
+              class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-cyan-400 transition-colors"
+            ></div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1"
+              >
+                <span class="text-cyan-400 font-bold"
+                  >YAYASAN KARYA SANG TIMUR</span
+                >
+                <span class="text-slate-500">Sep 2024</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-white">
+                Mathematics Tutor | Volunteer
+              </h3>
+
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Taught foundational mathematics concepts and problem-solving
+                techniques to primary and secondary students.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="relative group">
+            <div
+              class="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700 border-4 border-slate-950 group-hover:bg-cyan-400 transition-colors"
+            ></div>
+
+            <div class="glass-card p-6 rounded-2xl space-y-3">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono gap-1"
+              >
+                <span class="text-cyan-400 font-bold"
+                  >WIHARA EKAYANA ARAMA</span
+                >
+                <span class="text-slate-500">May 2026</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-white">
+                Tri Suci Waisak 2570 T.B. / 2026 | Security Volunteer
+              </h3>
+
+              <p class="text-sm text-slate-300 leading-relaxed">
+                Managed crowd flow, venue security, and access control for
+                attendees during the Vesak Day celebration.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="space-y-8">
+        <div>
+          <span
+            class="text-xs font-mono text-cyan-400 uppercase tracking-widest"
+            >/04. Technical Capabilities</span
+          >
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">
+            Skills & Tools Matrix
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Programming Languages -->
+          <div class="glass-card p-6 rounded-2xl space-y-4">
+            <div
+              class="flex items-center gap-3 text-cyan-400 font-mono text-sm font-bold border-b border-white/5 pb-3"
+            >
+              <i class="fa-solid fa-code"></i>
+              <span>PROGRAMMING LANGUAGES</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Python</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >C</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >JavaScript</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >TypeScript</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >SQL</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >HTML / CSS</span
+              >
+            </div>
+          </div>
+
+          <!-- AI & Machine Learning -->
+          <div class="glass-card p-6 rounded-2xl space-y-4">
+            <div
+              class="flex items-center gap-3 text-cyan-400 font-mono text-sm font-bold border-b border-white/5 pb-3"
+            >
+              <i class="fa-solid fa-brain"></i>
+              <span>AI / MACHINE LEARNING</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-cyan-300 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >PyTorch</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-cyan-300 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >TensorFlow</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >OpenCV</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >MediaPipe</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Scikit-Learn</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Deep Learning (CNN)</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Computer Vision</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >NLP</span
+              >
+            </div>
+          </div>
+
+          <!-- Web Frameworks -->
+          <div class="glass-card p-6 rounded-2xl space-y-4">
+            <div
+              class="flex items-center gap-3 text-cyan-400 font-mono text-sm font-bold border-b border-white/5 pb-3"
+            >
+              <i class="fa-solid fa-layer-group"></i>
+              <span>FRAMEWORKS & FRONTEND</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >React</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Node.js</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Vite</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Tailwind CSS</span
+              >
+            </div>
+          </div>
+
+          <!-- Databases & Tools -->
+          <div class="glass-card p-6 rounded-2xl space-y-4">
+            <div
+              class="flex items-center gap-3 text-cyan-400 font-mono text-sm font-bold border-b border-white/5 pb-3"
+            >
+              <i class="fa-solid fa-database"></i>
+              <span>DATABASES & INFRASTRUCTURE</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >MySQL</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Supabase</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Streamlit</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Git & GitHub</span
+              >
+              <span
+                class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/60 text-slate-200 text-xs font-mono hover:border-cyan-500/50 transition-colors"
+                >Hugging Face Spaces</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="border-t border-white/5 py-8 text-center text-xs font-mono text-slate-500"
+    >
+      <p>© 2026 Nicholas Leonid.</p>
+    </footer>
+
+    <div
+      id="projectModal"
+      class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4"
+    >
+      <div
+        class="glass-card max-w-xl w-full rounded-2xl p-6 space-y-5 relative max-h-[90vh] overflow-y-auto"
+      >
+        <button
+          onclick="closeDemoModal()"
+          class="absolute top-4 right-4 text-slate-400 hover:text-white"
+        >
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <div id="modalContent" class="space-y-4">
+          <!-- Content inserted dynamically via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast Box -->
+    <div
+      id="toast"
+      class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-xl bg-cyan-500 text-slate-950 font-mono text-xs font-bold shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2"
+    >
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toastMsg">Action completed!</span>
+    </div>
+
+    <script>
+      // Copy Contact Information
+      function copyContactInfo() {
+        const email = "nicholasleonid@gmail.com";
+        const dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = email;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+
+        showToast("Copied email (nicholasleonid@gmail.com) to clipboard!");
+      }
+
+      // Toast notification
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toastMsg");
+        toastMsg.textContent = msg;
+        toast.classList.remove("translate-y-20", "opacity-0");
+
+        setTimeout(() => {
+          toast.classList.add("translate-y-20", "opacity-0");
+        }, 3000);
+      }
+
+      // Filter Projects
+      function filterProjects(category) {
+        const cards = document.querySelectorAll(".project-card");
+        const buttons = document.querySelectorAll(".filter-btn");
+
+        buttons.forEach((btn) => {
+          btn.classList.remove(
+            "bg-cyan-500/20",
+            "text-cyan-300",
+            "border-cyan-500/40",
+          );
+          btn.classList.add("bg-slate-900", "text-slate-400", "border-white/5");
+        });
+
+        event.target.classList.remove(
+          "bg-slate-900",
+          "text-slate-400",
+          "border-white/5",
+        );
+        event.target.classList.add(
+          "bg-cyan-500/20",
+          "text-cyan-300",
+          "border-cyan-500/40",
+        );
+
+        cards.forEach((card) => {
+          const cats = card.getAttribute("data-category").split(" ");
+          if (category === "all" || cats.includes(category)) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      // Modal data source
+      const modalData = {
+        SleepGPA: {
+          title: "Academic GPA Predictor based on Sleep Behavior",
+          badge: "Python • Scikit-Learn • Gradient Boosting",
+          details: [
+            "Developed and deployed a Gradient Boosting regression pipeline for GPA prediction using sleep duration, schedule consistency, and previous GPA.",
+            "Used a dataset from 634 students to model semester GPA outcomes with focused behavioral features.",
+            "Achieved a 0.296 MAE while presenting the results through a lightweight interactive Streamlit interface.",
+          ],
+        },
+        HealthFlow: {
+          title: "HealthFlow — Fullstack Fitness Tracking AI Web App",
+          badge: "React • Supabase • Groq LLaMA 3",
+          details: [
+            "Automated calorie, exercise, and sleep cycle logging with responsive visual dashboards.",
+            "Powered by Groq LLaMA 3 inference engine for instant personalized fitness coaching.",
+            "Computer vision pipeline for image-based meal recognition and calorie auto-estimation.",
+            "Built using modern reactive tech stack: React, Vite, Tailwind CSS, Supabase backend.",
+          ],
+        },
+        HEER: {
+          title: "Facial Emotion Recognition (HEER)",
+          badge: "PyTorch • EfficientNetB0 • Landmark SE Attention",
+          details: [
+            "Developed Lightweight Facial Emotion Recognition framework achieving 71.45% accuracy on benchmark FER2013 dataset.",
+            "Incorporated Squeeze-and-Excitation (SE) Attention mechanism and facial landmark guidance.",
+            "Significantly reduced total trainable parameter count compared to classical architectures like ResNet50 and VGGNet.",
+          ],
+        },
+        TextSummarizer: {
+          title: "Indonesian Abstractive Text Summarizer",
+          badge: "Hugging Face • PyTorch • XL-Sum Dataset",
+          details: [
+            "Fine-tuned BART, PEGASUS, mT5, and T5 transformer models on XL-Sum Indonesian corpus.",
+            "BART achieved top performance with a ROUGE-1 score of 22.75.",
+            "Deployed directly to Hugging Face Spaces for continuous inference and testing.",
+          ],
+        },
+        ASL: {
+          title: "ASL Detection via MediaPipe 3D Landmarks",
+          badge: "45 FPS CPU Pipeline • 99.74% Accuracy",
+          details: [
+            "Captured 3D spatial hand landmarks utilizing Google MediaPipe Hands framework.",
+            "Engineered lightweight feature vectors passed into Support Vector Classifier (RBF Kernel).",
+            "Maintained 99.74% test accuracy with sub-millisecond inference time on standard CPUs at 45 FPS.",
+          ],
+        },
+      };
+
+      // Open Modal
+      function openDemoModal(key) {
+        const data = modalData[key];
+        if (!data) return;
+
+        const container = document.getElementById("modalContent");
+        container.innerHTML = `
+        <div class="text-xs font-mono text-cyan-400 uppercase">${data.badge}</div>
+        <h3 class="text-xl font-bold text-white">${data.title}</h3>
+        <div class="space-y-2 pt-2">
+          ${data.details
+            .map(
+              (item) => `
+            <div class="flex items-start gap-2.5 text-xs text-slate-300">
+              <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+              <span>${item}</span>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+        <div class="pt-4 flex justify-end">
+          <button onclick="closeDemoModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-mono text-slate-200">Close</button>
+        </div>
+      `;
+
+        document.getElementById("projectModal").classList.remove("hidden");
+        document.getElementById("projectModal").classList.add("flex");
+      }
+
+      // Close Modal
+      function closeDemoModal() {
+        document.getElementById("projectModal").classList.add("hidden");
+        document.getElementById("projectModal").classList.remove("flex");
+      }
+    </script>
+  </body>
+</html>
